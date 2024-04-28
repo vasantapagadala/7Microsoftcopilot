@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Tracker</title>
+    <style>
+        /* Your CSS styles go here */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        /* Add more styles as needed */
+    </style>
+</head>
+<body>
+    <h1>Budget Tracker</h1>
+    <form id="budgetForm">
+        <label for="income">Income:</label>
+        <input type="number" id="income" placeholder="Enter income">
+        <button type="button" onclick="addIncome()">Add Income</button>
+
+        <label for="expense">Expense:</label>
+        <input type="number" id="expense" placeholder="Enter expense">
+        <button type="button" onclick="addExpense()">Add Expense</button>
+    </form>
+
+    <div id="summary">
+        <p>Total Income: <span id="totalIncome">$0</span></p>
+        <p>Total Expenses: <span id="totalExpenses">$0</span></p>
+        <p>Budget Balance: <span id="budgetBalance">$0</span></p>
+    </div>
+
+    <script>
+        // Your JavaScript logic goes here
+        let income = 0;
+        let expenses = 0;
+
+        function addIncome() {
+            const incomeInput = document.getElementById('income');
+            const amount = parseFloat(incomeInput.value);
+            income += amount;
+            updateSummary();
+        }
+
+        function addExpense() {
+            const expenseInput = document.getElementById('expense');
+            const amount = parseFloat(expenseInput.value);
+            expenses += amount;
+            updateSummary();
+        }
+
+        function updateSummary() {
+            document.getElementById('totalIncome').textContent = `$${income}`;
+            document.getElementById('totalExpenses').textContent = `$${expenses}`;
+            const balance = income - expenses;
+            document.getElementById('budgetBalance').textContent = `$${balance}`;
+        }
+    </script>
+</body>
+</html>
